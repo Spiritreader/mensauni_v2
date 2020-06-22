@@ -1,0 +1,35 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "edge",
+        "request": "launch",
+        "version": "canary",
+        "name": "client: edge",
+        "url": "http://localhost:3000",
+        "webRoot": "${workspaceFolder}","address": "127.0.0.1",
+        "userDataDir": false
+      },
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "server: nuxt",
+        "args": ["dev"],
+        "osx": {
+          "program": "${workspaceFolder}/node_modules/.bin/nuxt"
+        },
+        "linux": {
+          "program": "${workspaceFolder}/node_modules/.bin/nuxt"
+        },
+        "windows": {
+          "program": "${workspaceFolder}/node_modules/nuxt/bin/nuxt.js"
+        }
+      }
+    ],
+    "compounds": [
+      {
+        "name": "fullstack: nuxt",
+        "configurations": ["server: nuxt", "client: edge"]
+      }
+    ]
+  }
