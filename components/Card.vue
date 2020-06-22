@@ -42,7 +42,7 @@ h4 {
   border-radius: 7px;
   border: 1px solid #35495e;
   background: #ffffff;
-  grid-template-columns: [c1]50% [c2]25% [c3]25% [end];
+  grid-template-columns: [c1]70% [c2]15% [c3]15% [end];
   grid-template-rows: auto;
   margin: 15px auto;
   padding: 15px;

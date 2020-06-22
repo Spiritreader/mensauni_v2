@@ -5,11 +5,11 @@
         <Logo />
         <h1 class="title">mensauni_v2</h1>
         <div class="links">
-          <button @click="languageDe" class="button--green">German</button>
-          <button @click="languageEn" class="button--grey">Englisch</button>
-          <button @click="previous" class="button--green">Previous</button>
-          <button @click="next" class="button--grey">Next</button>
-          <button @click="filterTest" class="button--grey">FilterTest</button>
+          <button @click="languageDe" class="button--green button">German</button>
+          <button @click="languageEn" class="button--grey button">Englisch</button>
+          <button @click="previous" class="button--green button">Previous</button>
+          <button @click="next" class="button--grey button">Next</button>
+          <button @click="filterTest" class="button--grey button">FilterTest</button>
         </div>
       </header>
       <main>
@@ -17,6 +17,7 @@
         <p>{{formatDate}}</p>
         <div class="menu">
           <p v-if="$fetchState.pending">Fetching menu...</p>
+          <p v-else-if="$fetchState.error">Error while fetching menu: {{ $fetchState.error.message }}</p>
           <card
             v-else
             v-for="menu in menus[current].dishes"
@@ -47,7 +48,8 @@ export default {
     //  return new Promise(resolve => setTimeout(resolve, ms));
     //}
     //await delay(2000);
-    let menus = await this.$http.$get(this.url);
+    //let menus = await this.$http.$get(this.url);
+    let menus = await fetch(this.url).then((res) => res.json())
     this.menus = menus;
   },
   fetchOnServer: false,
@@ -164,5 +166,10 @@ export default {
 
 .links {
   padding-top: 15px;
+}
+
+.button {
+  width: 122px;
+  margin: 8px;
 }
 </style>
