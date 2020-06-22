@@ -50,6 +50,7 @@ export default {
         'bootstrap-vue/nuxt',
         // Doc: https://axios.nuxtjs.org/usage
         '@nuxtjs/axios',
+        '@nuxt/http'
     ],
     /*
      ** Axios module configuration
@@ -66,6 +67,10 @@ export default {
                 config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map'
             }
         }
+    },
+
+    http: {
+
     },
 
     serverMiddleware: ['~/api/seezeit_parser.js']
