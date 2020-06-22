@@ -73,5 +73,9 @@ export default {
 
     },
 
-    serverMiddleware: ['~/api/seezeit_parser.js']
+    serverMiddleware: ['~/api/seezeit_parser.js'],
+
+    server: {
+        host: '0.0.0.0'
+    }
 }
