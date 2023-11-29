@@ -1,36 +1,46 @@
 {
-    "version": "0.2.0",
-    "configurations": [
-      {
-        "type": "edge",
-        "request": "launch",
-        "version": "canary",
-        "name": "client: edge",
-        "url": "http://localhost:3000",
-        "webRoot": "${workspaceFolder}","address": "127.0.0.1",
-        "userDataDir": false
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      //"version": "canary",
+      //"version": "dev",
+      "request": "launch",
+      "name": "vuejs: chrome",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}/src",
+      "userDataDir": false,
+      "breakOnLoad": true,
+      "sourceMapPathOverrides": {
+        "webpack:///src/*": "${webRoot}/*"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "server: nuxt",
+      "args": [
+        "dev"
+      ],
+      "osx": {
+        "program": "${workspaceFolder}/node_modules/.bin/nuxt"
       },
-      {
-        "type": "node",
-        "request": "launch",
-        "name": "server: nuxt",
-        "args": ["dev"],
-        "osx": {
-          "program": "${workspaceFolder}/node_modules/.bin/nuxt"
-        },
-        "linux": {
-          "program": "${workspaceFolder}/node_modules/.bin/nuxt"
-        },
-        "windows": {
-          "program": "${workspaceFolder}/node_modules/nuxt/bin/nuxt.js"
-        },
-        "outputCapture": "std",
-      }
-    ],
-    "compounds": [
-      {
-        "name": "fullstack: nuxt",
-        "configurations": ["server: nuxt", "client: edge"]
-      }
-    ]
-  }
+      "linux": {
+        "program": "${workspaceFolder}/node_modules/.bin/nuxt"
+      },
+      "windows": {
+        "program": "${workspaceFolder}/node_modules/nuxt/bin/nuxt.js"
+      },
+      "outputCapture": "std",
+    }
+  ],
+  "compounds": [
+    {
+      "name": "fullstack: nuxt",
+      "configurations": [
+        "server: nuxt",
+        "client: edge"
+      ]
+    }
+  ]
+}

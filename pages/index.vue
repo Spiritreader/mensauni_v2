@@ -18,8 +18,8 @@
         <div class="menu">
           <p v-if="$fetchState.pending">Fetching menu...</p>
           <p v-else-if="$fetchState.error">Error while fetching menu: {{ $fetchState.error.message }}</p>
-          <card
-            v-else
+          <div v-else>
+            <card
             v-for="menu in menus[current].dishes"
             :name="menu.Name"
             :key="menu.date"
@@ -27,6 +27,7 @@
             :pricing="menu.Pricing"
             :tags="menu.Tags"
           ></card>
+          </div>
         </div>
       </main>
       <footer>Made with technology ❤</footer>
